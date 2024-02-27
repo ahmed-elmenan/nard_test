@@ -22,7 +22,7 @@ class NardApp extends StatelessWidget {
         ),
         colorScheme: ColorScheme.fromSeed(
           background: const Color(0xFFEDF1F4),
-          seedColor: const Color(0xFFFF5D21),
+          seedColor: Colors.white,
         ),
         fontFamily: 'Inter-Regular',
         useMaterial3: true,

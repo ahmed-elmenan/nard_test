@@ -3,22 +3,33 @@ import 'package:flutter/material.dart';
 class ActionButton extends StatelessWidget {
   final VoidCallback callback;
   final String text;
+  final bool isNext;
 
-  const ActionButton({super.key, required this.callback, required this.text});
+  const ActionButton(
+      {super.key,
+      required this.callback,
+      required this.text,
+      this.isNext = true});
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Text(
-          text,
-          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
-        ),
-        const Icon(
-          Icons.chevron_right,
-          color: Color(0xFFFF5D21),
-        )
-      ],
+    return GestureDetector(
+      onTap: callback,
+      child: Row(
+        children: [
+          if (!isNext) _actionIcon(Icons.chevron_left),
+          Text(
+            text,
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
+          ),
+          if (isNext) _actionIcon(Icons.chevron_right),
+        ],
+      ),
     );
   }
+
+  Widget _actionIcon(IconData icon) => Icon(
+        icon,
+        color: const Color(0xFFFF5D21),
+      );
 }

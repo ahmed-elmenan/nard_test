@@ -1,4 +1,4 @@
-final onboaridngInfo = [
+final kOnboaridngInfo = [
   (
     assetName: "./assets/images/products_box.svg",
     text: "كل منتجات العالم في صندوق انبوكس",
@@ -11,4 +11,8 @@ final onboaridngInfo = [
     assetName: "./assets/images/security_man.svg",
     text: "في انبوكس الشحنات بأمان وحمایة عالیة جدا",
   )
-]; // list of record data type
+];
+
+({String action, String message}) kBuildMessage(bool isLogin) => isLogin
+    ? (message: "Already have an account?", action: 'Login')
+    : (message: "Don’t have an account?", action: 'Sign up');

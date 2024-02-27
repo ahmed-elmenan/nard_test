@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nard_test/core/commons/widgets/action_button.dart';
-import 'package:nard_test/core/consts/consts.dart';
+import 'package:nard_test/core/consts/record_consts.dart';
+import 'package:nard_test/features/auth/views/otp_view.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnBoarding extends StatelessWidget {
   OnBoarding({super.key});
 
   final controller = PageController(initialPage: 0);
+
+  void _didTapNext(BuildContext context) {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => OTPView()));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +23,7 @@ class OnBoarding extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 15),
             child: ActionButton(
-              callback: () {},
+              callback: () => _didTapNext(context),
               text: 'Next',
             ),
           )
@@ -34,8 +40,8 @@ class OnBoarding extends StatelessWidget {
                 itemBuilder: (context, index) {
                   final i = index % 3;
                   return OnBoaridngItem(
-                    assetName: onboaridngInfo[i].assetName,
-                    text: onboaridngInfo[i].text,
+                    assetName: kOnboaridngInfo[i].assetName,
+                    text: kOnboaridngInfo[i].text,
                   );
                 }),
           ),

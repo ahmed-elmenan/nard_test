@@ -37,6 +37,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_svg: ^2.0.10+1
   smooth_page_indicator: ^1.1.0
+  extended_phone_number_input:
+    path: packages/extended_phone_number_input 
 
 dev_dependencies:
   flutter_test:
