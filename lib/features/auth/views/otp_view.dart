@@ -1,28 +1,36 @@
 import 'package:flutter/material.dart';
-import 'package:nard_test/core/commons/custom_button.dart';
+import 'package:nard_test/core/commons/widgets/custom_button.dart';
 import 'package:nard_test/core/commons/widgets/title_widget.dart';
 import 'package:nard_test/core/theme/styles.dart';
 import 'package:nard_test/features/auth/widgets/count_down_timer.dart';
 import 'package:nard_test/features/auth/widgets/form_fields_wrapper.dart';
 
 class OTPView extends StatelessWidget {
-  OTPView({super.key});
+  final String title;
+  final VoidCallback callback;
+
+  OTPView({super.key, required this.title, required this.callback});
 
   final List<TextEditingController> controllers =
       List.generate(4, (index) => TextEditingController());
 
   final List<FocusNode> focusNodes = List.generate(4, (index) => FocusNode());
 
-  void _didTapResendCode() {}
-
   @override
   Widget build(BuildContext context) {
     return FormFieldsWrapper(
       children: [
-        const TitlesWidget(),
+        TitlesWidget(
+          title: title,
+          subTitle:
+              'Enter 4-digit verification code send to your mobile number',
+        ),
         _buildOTPFields(),
         _buildResendCode(),
-        CustomButton(onPressed: () {}, text: 'Verify'),
+        CustomButton(
+            onPressed: () {
+            },
+            text: 'Verify'),
       ],
     );
   }

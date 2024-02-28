@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:extended_phone_number_input/src/models/country.dart';
-import 'package:extended_phone_number_input/src/utils/number_converter.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttercontactpicker/fluttercontactpicker.dart';
 import 'package:phone_numbers_parser/phone_numbers_parser.dart' as parserNumber;
@@ -17,7 +16,6 @@ class PhoneNumberInputController extends ChangeNotifier {
 
   late List<Country> _countries;
   late List<Country> _visibleCountries;
-  String? _errorText;
   String? _initialCountryCode;
   String? _initialPhoneNumber;
   List<String>? _includeCountries;
@@ -27,16 +25,13 @@ class PhoneNumberInputController extends ChangeNotifier {
   late Country _selectedCountry;
   String _phoneNumber = '';
   String _searchKey = '';
-  bool _isValid = false;
 
   set innerPhoneNumber(String innerPhoneNumber) {
     _phoneNumber = innerPhoneNumber;
     notifyListeners();
   }
 
-  set errorText(String errorText) {
-    _errorText = errorText;
-  }
+
 
   Future init(
       {String? initialCountryCode,
@@ -48,7 +43,6 @@ class PhoneNumberInputController extends ChangeNotifier {
     _countries = await loadCountries(_context, locale: locale);
     _visibleCountries = _countries;
     _selectedCountry = _countries.first;
-    _errorText = errorText;
     _initialCountryCode = initialCountryCode;
     _excludeCountries = excludeCountries;
     _includeCountries = includeCountries;
@@ -82,7 +76,6 @@ class PhoneNumberInputController extends ChangeNotifier {
   String get phoneNumber => _phoneNumber;
   String get searchKey => _searchKey;
   String get fullPhoneNumber => '${_selectedCountry.dialCode}$_phoneNumber';
-  bool get isValidNumber => _isValid;
 
   List<Country> get getCountries {
     if (_searchKey.isEmpty) {
@@ -115,27 +108,6 @@ class PhoneNumberInputController extends ChangeNotifier {
     });
   }
 
-  String? validator(String? phoneNumber) {
-    if (phoneNumber == null || phoneNumber.isEmpty) {
-      _isValid = false;
-      return _errorText ?? 'الرجاء إدخال رقم الجوال';
-    } else {
-      try {
-        final englishNumber = arabicNumberConverter(phoneNumber);
-        final phoneInfo =
-            getPhoneNumberInfo('${_selectedCountry.dialCode}$englishNumber');
-        final isValid = phoneInfo.validate();
-        _isValid = isValid;
-        if (!isValid) {
-          return _errorText ?? "الرجاء ادخال رقم جوال صحيح";
-        }
-        return null;
-      } catch (e) {
-        debugPrint(e.toString());
-        return null;
-      }
-    }
-  }
 
   parserNumber.PhoneNumber getPhoneNumberInfo(String phoneNumber) {
     return parserNumber.PhoneNumber.fromRaw(phoneNumber);

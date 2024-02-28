@@ -16,7 +16,7 @@ class LoginPrompt extends StatelessWidget {
   }
 
   void _didTapAction(BuildContext context) {
-    final view = isLoginSection ? const LoginView() : const RegisterView();
+    final view = isLoginSection ? LoginView() : RegisterView();
 
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => view));
   }

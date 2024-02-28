@@ -24,11 +24,12 @@ class FormFieldsWrapper extends StatelessWidget {
       body: SingleChildScrollView(
           child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 14),
-              child: Column(
-                  children: [
-                    SizedBox(height: height / divider),
-                    ...children
-                  ]))),
+              child: Center(
+                child: Column(children: [
+                  SizedBox(height: height / divider),
+                  ...children
+                ]),
+              ))),
     );
   }
 }

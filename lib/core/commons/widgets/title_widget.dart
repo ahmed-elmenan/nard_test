@@ -1,37 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:nard_test/core/helpers/widget_helper.dart';
 import 'package:nard_test/core/theme/styles.dart';
 
 class TitlesWidget extends StatelessWidget {
-  const TitlesWidget({super.key});
+  final String title;
+  final String subTitle;
+  const TitlesWidget({super.key, required this.title, required this.subTitle});
 
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     return Column(
       children: [
-        _buildTitle(
-          title: 'One final step! We need to verify your phone number',
+        WidgetHelper.buildTitle(
+          title: title,
           style: Styles.headerTextStyle,
+          paddingValue: 25,
         ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: width / 7),
-          child: _buildTitle(
-              title:
-                  'Enter 4-digit verification code send to your mobile number',
-              style: Styles.subHeaderTextStyle),
+          child: WidgetHelper.buildTitle(
+              title: subTitle,
+              style: Styles.subHeaderTextStyle,
+              paddingValue: 25),
         )
       ],
-    );
-  }
-
-  Widget _buildTitle({required String title, required style}) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 25),
-      child: Text(
-        title,
-        textAlign: TextAlign.center,
-        style: style,
-      ),
     );
   }
 }

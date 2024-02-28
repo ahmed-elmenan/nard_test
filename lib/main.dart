@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get_it/get_it.dart';
+import 'package:nard_test/core/services/navigation_service.dart';
 import 'package:nard_test/features/onboarding/views/on_boarding.dart';
 
 void main() async {
@@ -7,7 +10,8 @@ void main() async {
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
-  runApp(const NardApp());
+  GetIt.instance.registerLazySingleton(() => NavigationService());
+  runApp(const ProviderScope(child: NardApp()));
 }
 
 class NardApp extends StatelessWidget {
@@ -16,6 +20,7 @@ class NardApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      navigatorKey: NavigationService.instance.navigatorKey,
       theme: ThemeData(
         appBarTheme: const AppBarTheme(
           backgroundColor: Color(0xFFEDF1F4),

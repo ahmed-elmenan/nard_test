@@ -25,8 +25,11 @@ class PhoneNumberInput extends StatefulWidget {
   final CountryListMode countryListMode;
   final InputBorder? enabledBorder;
   final InputBorder? focusedBorder;
+  final InputBorder? errorBorder;
   final ContactsPickerPosition contactsPickerPosition;
   final String? errorText;
+  final String? Function(String?)? validator;
+
   const PhoneNumberInput({
     Key? key,
     this.controller,
@@ -49,10 +52,12 @@ class PhoneNumberInput extends StatefulWidget {
     this.contactsPickerPosition = ContactsPickerPosition.suffix,
     this.errorText,
     this.hintStyle,
+    this.validator,
+    this.errorBorder,
   }) : super(key: key);
 
   @override
-  _CountryCodePickerState createState() => _CountryCodePickerState();
+  State<PhoneNumberInput> createState() => _CountryCodePickerState();
 }
 
 class _CountryCodePickerState extends State<PhoneNumberInput> {
@@ -102,11 +107,6 @@ class _CountryCodePickerState extends State<PhoneNumberInput> {
   }
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return FutureBuilder(
         future: _initFuture,
@@ -116,6 +116,7 @@ class _CountryCodePickerState extends State<PhoneNumberInput> {
               Directionality(
                 textDirection: TextDirection.ltr,
                 child: TextFormField(
+                  validator: widget.validator,
                   controller: _phoneNumberTextFieldController,
                   inputFormatters: [
                     LengthLimitingTextInputFormatter(15),
@@ -124,8 +125,6 @@ class _CountryCodePickerState extends State<PhoneNumberInput> {
                   onChanged: (v) {
                     _phoneNumberInputController.innerPhoneNumber = v;
                   },
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  // validator: _phoneNumberInputController.validator,
                   keyboardType: TextInputType.phone,
                   textAlignVertical: TextAlignVertical.center,
                   decoration: InputDecoration(
@@ -138,6 +137,8 @@ class _CountryCodePickerState extends State<PhoneNumberInput> {
                         const TextStyle(color: Color(0xFFB6B6B6)),
                     enabledBorder: widget.enabledBorder,
                     focusedBorder: widget.focusedBorder,
+                    errorBorder: widget.errorBorder,
+                    errorStyle: const TextStyle(color: Colors.red),
                     suffixIcon: Visibility(
                       visible: widget.allowPickFromContacts &&
                           widget.contactsPickerPosition ==

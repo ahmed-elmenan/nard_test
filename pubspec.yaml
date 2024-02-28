@@ -39,6 +39,8 @@ dependencies:
   smooth_page_indicator: ^1.1.0
   extended_phone_number_input:
     path: packages/extended_phone_number_input 
+  get_it: ^7.6.7
+  flutter_riverpod: ^2.4.10
 
 dev_dependencies:
   flutter_test:

@@ -24,6 +24,10 @@ abstract class Styles {
       borderSide: const BorderSide(color: Color(0xFFFF5D21), width: 2.0),
       borderRadius: BorderRadius.circular(10.0));
 
+  static InputBorder errorTextFieldBorderStyle = OutlineInputBorder(
+      borderSide: const BorderSide(color: Colors.red, width: 1),
+      borderRadius: BorderRadius.circular(10.0));
+
   static TextStyle inlineTextStyle = const TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w600,

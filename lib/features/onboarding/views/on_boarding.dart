@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nard_test/core/commons/widgets/action_button.dart';
 import 'package:nard_test/core/consts/record_consts.dart';
-import 'package:nard_test/features/auth/views/otp_view.dart';
 import 'package:nard_test/features/auth/views/register_view.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
