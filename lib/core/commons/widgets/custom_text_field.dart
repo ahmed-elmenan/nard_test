@@ -33,12 +33,12 @@ class CustomTextField extends ConsumerStatefulWidget {
 
 class _CustomTextFieldState extends ConsumerState<CustomTextField> {
   late bool isObscured;
-  late TextFieldModel textFieldModel;
+  late TextFieldValidator validator;
 
   @override
   void initState() {
     isObscured = true;
-    textFieldModel = ref.read(textFieldProvider(widget.type));
+    validator = ref.read(textFieldValidatorProvider(widget.type));
 
     super.initState();
   }
@@ -54,11 +54,11 @@ class _CustomTextFieldState extends ConsumerState<CustomTextField> {
         SizedBox(
           // height: 50,
           child: TextFormField(
-              validator: textFieldModel.validateField,
-              keyboardType: textFieldModel.imputType,
-              obscureText: textFieldModel.isPassword ? isObscured : false,
+              validator: validator.validateField,
+              keyboardType: validator.imputType,
+              obscureText: validator.isPassword ? isObscured : false,
               controller: widget.controller,
-              maxLength: textFieldModel.isNumber ? 15 : null,
+              maxLength: validator.isNumber ? 15 : null,
               autocorrect: false,
               textAlign: TextAlign.left,
               inputFormatters: [
@@ -90,7 +90,7 @@ class _CustomTextFieldState extends ConsumerState<CustomTextField> {
     );
   }
 
-  Widget? _buildSuffixIcon(String assetName) => textFieldModel.isPassword
+  Widget? _buildSuffixIcon(String assetName) => validator.isPassword
       ? IconButton(
           onPressed: () {
             setState(() {

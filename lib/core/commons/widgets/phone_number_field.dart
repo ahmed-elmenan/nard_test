@@ -11,7 +11,8 @@ class PhoneNumberField extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final textFieldModel = ref.read(textFieldProvider(FieldType.number));
+    final textFieldModel =
+        ref.read(textFieldValidatorProvider(FieldType.number));
 
     return Column(
       children: [

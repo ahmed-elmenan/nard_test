@@ -6,10 +6,10 @@ import 'package:nard_test/core/consts/text_field_enums.dart';
 
 final passwordToMatch = StateProvider.autoDispose<String>((ref) => '');
 
-class TextFieldModel {
+class TextFieldValidator {
   final Ref ref;
   final FieldType type;
-  TextFieldModel(this.ref, this.type);
+  TextFieldValidator(this.ref, this.type);
 
   bool get isPassword =>
       [FieldType.password, FieldType.passwordConfirmation].contains(type);
@@ -81,7 +81,7 @@ class TextFieldModel {
   // end region
 }
 
-final textFieldProvider =
-    Provider.autoDispose.family<TextFieldModel, FieldType>((ref, type) {
-  return TextFieldModel(ref, type);
+final textFieldValidatorProvider =
+    Provider.autoDispose.family<TextFieldValidator, FieldType>((ref, type) {
+  return TextFieldValidator(ref, type);
 });
