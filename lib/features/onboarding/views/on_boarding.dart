@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nard_test/core/commons/widgets/action_button.dart';
 import 'package:nard_test/core/consts/record_consts.dart';
 import 'package:nard_test/features/auth/views/otp_view.dart';
+import 'package:nard_test/features/auth/views/register_view.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnBoarding extends StatelessWidget {
@@ -12,7 +13,7 @@ class OnBoarding extends StatelessWidget {
 
   void _didTapNext(BuildContext context) {
     Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => OTPView()));
+        .push(MaterialPageRoute(builder: (context) => RegisterView()));
   }
 
   @override

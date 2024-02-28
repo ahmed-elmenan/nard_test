@@ -187,7 +187,7 @@ class _CountryCodePickerState extends State<PhoneNumberInput> {
                             const Icon(Icons.expand_more,
                                 color: Color(0xFF2A3E4E)),
                             Container(
-                              height: 50,
+                              height: 40,
                               width: 1,
                               color: const Color(0xFFEDF1F4),
                             ),
