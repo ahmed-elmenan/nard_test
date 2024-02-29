@@ -27,10 +27,7 @@ class OTPView extends StatelessWidget {
         ),
         _buildOTPFields(),
         _buildResendCode(),
-        CustomButton(
-            onPressed: () {
-            },
-            text: 'Verify'),
+        CustomButton(onPressed: callback, text: 'Verify'),
       ],
     );
   }

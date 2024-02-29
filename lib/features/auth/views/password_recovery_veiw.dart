@@ -23,8 +23,9 @@ class PasswordRecoveryView extends StatelessWidget {
   }
 
   void _redirectToResetPassword(BuildContext context) {
-    Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => ResetPasswordView()));
+    Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) => ResetPasswordView()),
+        (Route<dynamic> route) => false);
   }
 
   @override

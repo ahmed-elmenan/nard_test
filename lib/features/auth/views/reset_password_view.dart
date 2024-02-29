@@ -28,7 +28,7 @@ class ResetPasswordView extends StatelessWidget {
 
   void _redirectToSignIn(BuildContext context) {
     Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (context) => LoginView()),
+        MaterialPageRoute(builder: (context) => LoginView(shouldExit: true,)),
         (Route<dynamic> route) => false);
   }
 

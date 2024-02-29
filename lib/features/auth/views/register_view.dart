@@ -3,6 +3,7 @@ import 'package:nard_test/core/commons/widgets/custom_button.dart';
 import 'package:nard_test/core/commons/widgets/custom_text_field.dart';
 import 'package:nard_test/core/consts/text_field_enums.dart';
 import 'package:nard_test/core/helpers/dialog_helper.dart';
+import 'package:nard_test/features/auth/views/login_view.dart';
 import 'package:nard_test/features/auth/views/otp_view.dart';
 import 'package:nard_test/features/auth/widgets/form_fields_wrapper.dart';
 import 'package:nard_test/core/commons/widgets/phone_number_field.dart';
@@ -23,18 +24,26 @@ class RegisterView extends StatelessWidget {
   void _redirectToOTP(BuildContext context) {
     Navigator.of(context).push(MaterialPageRoute(
         builder: (context) => OTPView(
-              title: 'Check your phone',
-              callback: _showOTPAlert,
+              title: 'One final step! We need to verify your phone number',
+              callback: () => _showOTPAlert(context),
             )));
   }
 
-  void _showOTPAlert() {
+  void _showOTPAlert(BuildContext context) {
     DialogHelper.showDialog(
         title: 'Mobile successfully verified!',
         subTitle: 'Your mobile was successfully verified',
         assetName: 'assets/images/verified.svg',
         label: 'Ok',
-        callback: () {});
+        callback: () {
+          _redirectToSignIn(context);
+        });
+  }
+
+  void _redirectToSignIn(BuildContext context) {
+    Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) => LoginView()),
+        (Route<dynamic> route) => false);
   }
 
   @override

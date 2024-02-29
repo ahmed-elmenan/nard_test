@@ -29,32 +29,36 @@ class OnBoarding extends StatelessWidget {
           )
         ],
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SizedBox(
-            height: 500,
-            child: PageView.builder(
-                padEnds: false,
+      body: Center(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                height: 500,
+                child: PageView.builder(
+                    padEnds: false,
+                    controller: controller,
+                    itemBuilder: (context, index) {
+                      final i = index % 3;
+                      return OnBoaridngItem(
+                        assetName: kOnboaridngInfo[i].assetName,
+                        text: kOnboaridngInfo[i].text,
+                      );
+                    }),
+              ),
+              SmoothPageIndicator(
                 controller: controller,
-                itemBuilder: (context, index) {
-                  final i = index % 3;
-                  return OnBoaridngItem(
-                    assetName: kOnboaridngInfo[i].assetName,
-                    text: kOnboaridngInfo[i].text,
-                  );
-                }),
+                count: 3,
+                effect: const ExpandingDotsEffect(
+                    activeDotColor: Color(0xFFFF5D21),
+                    dotHeight: 10,
+                    dotWidth: 10,
+                    dotColor: Color(0xFF87a0b3)),
+              ),
+            ],
           ),
-          SmoothPageIndicator(
-            controller: controller,
-            count: 3,
-            effect: const ExpandingDotsEffect(
-                activeDotColor: Color(0xFFFF5D21),
-                dotHeight: 10,
-                dotWidth: 10,
-                dotColor: Color(0xFF87a0b3)),
-          ),
-        ],
+        ),
       ),
     );
   }

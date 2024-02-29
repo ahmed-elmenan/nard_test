@@ -13,6 +13,6 @@ final kOnboaridngInfo = [
   )
 ];
 
-({String action, String message}) kBuildMessage(bool isLogin) => isLogin
+({String action, String message}) kBuildMessage(bool isLogin) => !isLogin
     ? (message: "Already have an account?", action: 'Login')
     : (message: "Don’t have an account?", action: 'Sign up');
