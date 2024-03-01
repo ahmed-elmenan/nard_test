@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nard_test/core/theme/theme_notifier.dart';
+import 'package:nard_test/core/theme/theme_helper.dart';
 
 class ActionButton extends ConsumerWidget {
   final VoidCallback callback;

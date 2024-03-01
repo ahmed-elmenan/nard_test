@@ -6,7 +6,7 @@ import 'package:nard_test/core/consts/controllers_consts.dart';
 import 'package:nard_test/core/consts/text_field_enums.dart';
 import 'package:nard_test/core/theme/styles.dart';
 import 'package:nard_test/features/auth/widgets/forgot_password.dart';
-import 'package:nard_test/features/auth/widgets/form_fields_wrapper.dart';
+import 'package:nard_test/core/commons/widgets/form_fields_wrapper.dart';
 import 'package:nard_test/features/auth/widgets/login_prompt.dart';
 
 class LoginView extends ConsumerWidget {

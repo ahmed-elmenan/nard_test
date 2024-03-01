@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_it/get_it.dart';
 import 'package:nard_test/core/services/navigation_service.dart';
 import 'package:nard_test/core/theme/theme_data.dart';
-import 'package:nard_test/core/theme/theme_notifier.dart';
+import 'package:nard_test/core/theme/theme_helper.dart';
 import 'package:nard_test/features/onboarding/views/on_boarding.dart';
 
 void main() async {

@@ -3,9 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nard_test/core/commons/widgets/custom_button.dart';
 import 'package:nard_test/core/commons/widgets/title_widget.dart';
 import 'package:nard_test/core/theme/styles.dart';
-import 'package:nard_test/core/theme/theme_notifier.dart';
+import 'package:nard_test/core/theme/theme_helper.dart';
 import 'package:nard_test/features/auth/widgets/count_down_timer.dart';
-import 'package:nard_test/features/auth/widgets/form_fields_wrapper.dart';
+import 'package:nard_test/core/commons/widgets/form_fields_wrapper.dart';
 
 class OTPView extends ConsumerWidget {
   final String title;

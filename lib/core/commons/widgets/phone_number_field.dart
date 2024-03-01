@@ -1,12 +1,12 @@
 import 'package:extended_phone_number_input/extended_phone_number_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nard_test/core/commons/models/text_field_notifier.dart';
+import 'package:nard_test/core/models/text_field_validator.dart';
 import 'package:nard_test/core/consts/controllers_consts.dart';
 import 'package:nard_test/core/consts/text_field_enums.dart';
 import 'package:nard_test/core/helpers/widget_helper.dart';
 import 'package:nard_test/core/theme/styles.dart';
-import 'package:nard_test/core/theme/theme_notifier.dart';
+import 'package:nard_test/core/theme/theme_helper.dart';
 
 class PhoneNumberField extends ConsumerWidget {
   const PhoneNumberField({super.key});

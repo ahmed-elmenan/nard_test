@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:nard_test/core/commons/models/text_field_notifier.dart';
+import 'package:nard_test/core/models/text_field_validator.dart';
 import 'package:nard_test/core/consts/text_field_enums.dart';
 import 'package:nard_test/core/helpers/widget_helper.dart';
 import 'package:nard_test/core/theme/styles.dart';
-import 'package:nard_test/core/theme/theme_notifier.dart';
+import 'package:nard_test/core/theme/theme_helper.dart';
 
 class CustomTextField extends ConsumerStatefulWidget {
   final TextEditingController? controller;

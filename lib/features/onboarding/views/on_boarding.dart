@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nard_test/core/commons/widgets/action_button.dart';
 import 'package:nard_test/core/commons/widgets/theme_switcher.dart';
 import 'package:nard_test/core/consts/record_consts.dart';
-import 'package:nard_test/core/theme/theme_notifier.dart';
+import 'package:nard_test/core/theme/theme_helper.dart';
 import 'package:nard_test/features/auth/views/register_view.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 

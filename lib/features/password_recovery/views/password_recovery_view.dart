@@ -4,9 +4,9 @@ import 'package:nard_test/core/commons/widgets/custom_text_field.dart';
 import 'package:nard_test/core/consts/controllers_consts.dart';
 import 'package:nard_test/core/consts/text_field_enums.dart';
 import 'package:nard_test/core/helpers/widget_helper.dart';
-import 'package:nard_test/features/auth/views/otp_view.dart';
-import 'package:nard_test/features/auth/views/reset_password_view.dart';
-import 'package:nard_test/features/auth/widgets/form_fields_wrapper.dart';
+import 'package:nard_test/features/otp/views/otp_view.dart';
+import 'package:nard_test/features/password_recovery/views/reset_password_view.dart';
+import 'package:nard_test/core/commons/widgets/form_fields_wrapper.dart';
 
 class PasswordRecoveryView extends StatelessWidget {
   PasswordRecoveryView({super.key});

@@ -1,7 +1,7 @@
 import 'package:dark_light_button/dark_light_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nard_test/core/theme/theme_notifier.dart';
+import 'package:nard_test/core/theme/theme_helper.dart';
 
 class ThemeSwither extends ConsumerWidget {
   const ThemeSwither({super.key});

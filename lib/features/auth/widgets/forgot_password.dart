@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nard_test/core/theme/styles.dart';
-import 'package:nard_test/features/auth/views/password_recovery_veiw.dart';
+import 'package:nard_test/features/password_recovery/views/password_recovery_view.dart';
 
 class ForgotPassword extends StatelessWidget {
   const ForgotPassword({super.key});

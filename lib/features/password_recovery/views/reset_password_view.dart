@@ -6,9 +6,9 @@ import 'package:nard_test/core/commons/widgets/title_widget.dart';
 import 'package:nard_test/core/consts/controllers_consts.dart';
 import 'package:nard_test/core/consts/text_field_enums.dart';
 import 'package:nard_test/core/helpers/dialog_helper.dart';
-import 'package:nard_test/core/theme/theme_notifier.dart';
+import 'package:nard_test/core/theme/theme_helper.dart';
 import 'package:nard_test/features/auth/views/login_view.dart';
-import 'package:nard_test/features/auth/widgets/form_fields_wrapper.dart';
+import 'package:nard_test/core/commons/widgets/form_fields_wrapper.dart';
 
 class ResetPasswordView extends ConsumerWidget {
   ResetPasswordView({super.key});
