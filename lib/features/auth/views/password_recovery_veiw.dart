@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nard_test/core/commons/widgets/custom_button.dart';
 import 'package:nard_test/core/commons/widgets/custom_text_field.dart';
+import 'package:nard_test/core/consts/controllers_consts.dart';
 import 'package:nard_test/core/consts/text_field_enums.dart';
 import 'package:nard_test/core/helpers/widget_helper.dart';
 import 'package:nard_test/features/auth/views/otp_view.dart';
@@ -38,7 +39,8 @@ class PasswordRecoveryView extends StatelessWidget {
               title: 'Password Recovery',
               subTitle: 'Enter your phone to recover password',
               assetName: 'assets/images/recover_password.svg'),
-          const CustomTextField(
+           CustomTextField(
+            controller: resetNumberController,
               textHint: 'Mobile number', type: FieldType.number),
           const SizedBox(
             height: 8,

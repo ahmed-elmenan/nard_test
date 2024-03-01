@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nard_test/core/commons/widgets/action_button.dart';
+import 'package:nard_test/core/commons/widgets/theme_switcher.dart';
 import 'package:nard_test/core/consts/record_consts.dart';
+import 'package:nard_test/core/theme/theme_notifier.dart';
 import 'package:nard_test/features/auth/views/register_view.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class OnBoarding extends StatelessWidget {
+class OnBoarding extends ConsumerWidget {
   OnBoarding({super.key});
 
   final controller = PageController(initialPage: 0);
@@ -16,10 +19,11 @@ class OnBoarding extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
         actions: [
+          const ThemeSwither(),
           Padding(
             padding: const EdgeInsets.only(left: 15),
             child: ActionButton(
@@ -50,11 +54,11 @@ class OnBoarding extends StatelessWidget {
               SmoothPageIndicator(
                 controller: controller,
                 count: 3,
-                effect: const ExpandingDotsEffect(
-                    activeDotColor: Color(0xFFFF5D21),
+                effect: ExpandingDotsEffect(
+                    activeDotColor: const Color(0xFFFF5D21),
                     dotHeight: 10,
                     dotWidth: 10,
-                    dotColor: Color(0xFF87a0b3)),
+                    dotColor: ref.read(themeProvider).indicatorDotColor),
               ),
             ],
           ),
@@ -89,9 +93,9 @@ class OnBoaridngItem extends StatelessWidget {
           Text(text,
               textAlign: TextAlign.center,
               style: const TextStyle(
-                  fontFamily: 'Inter-Regular',
-                  fontSize: 30,
-                  fontWeight: FontWeight.w700))
+                fontFamily: 'Khebrat',
+                fontSize: 30,
+              ))
         ],
       ),
     );

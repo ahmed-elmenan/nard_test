@@ -7,7 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class PhoneNumberInput extends StatefulWidget {
-  final PhoneNumberInputController? controller;
+  final PhoneNumberInputController? phoneController;
+  final TextEditingController controller;
   final String? initialValue;
   final String? initialCountry;
   final List<String>? excludedCountries;
@@ -29,10 +30,12 @@ class PhoneNumberInput extends StatefulWidget {
   final ContactsPickerPosition contactsPickerPosition;
   final String? errorText;
   final String? Function(String?)? validator;
+  final Color? bgColor;
+  final Color? textColor;
 
   const PhoneNumberInput({
     Key? key,
-    this.controller,
+    this.phoneController,
     this.onChanged,
     this.initialValue,
     this.initialCountry,
@@ -54,6 +57,9 @@ class PhoneNumberInput extends StatefulWidget {
     this.hintStyle,
     this.validator,
     this.errorBorder,
+    this.bgColor = Colors.white,
+    this.textColor,
+    required this.controller,
   }) : super(key: key);
 
   @override
@@ -68,12 +74,12 @@ class _CountryCodePickerState extends State<PhoneNumberInput> {
 
   @override
   void initState() {
-    if (widget.controller == null) {
+    if (widget.phoneController == null) {
       _phoneNumberInputController = PhoneNumberInputController(
         context,
       );
     } else {
-      _phoneNumberInputController = widget.controller!;
+      _phoneNumberInputController = widget.phoneController!;
     }
     _initFuture = _init();
     _phoneNumberInputController.addListener(_refresh);
@@ -117,7 +123,8 @@ class _CountryCodePickerState extends State<PhoneNumberInput> {
                 textDirection: TextDirection.ltr,
                 child: TextFormField(
                   validator: widget.validator,
-                  controller: _phoneNumberTextFieldController,
+                  controller: widget.controller,
+                  style: TextStyle(color: widget.textColor),
                   inputFormatters: [
                     LengthLimitingTextInputFormatter(15),
                     FilteringTextInputFormatter.allow(kNumberRegex),
@@ -129,7 +136,7 @@ class _CountryCodePickerState extends State<PhoneNumberInput> {
                   textAlignVertical: TextAlignVertical.center,
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.zero,
-                    fillColor: Colors.white,
+                    fillColor: widget.bgColor,
                     filled: true,
                     hintText: widget.hint,
                     border: widget.border,
@@ -178,15 +185,14 @@ class _CountryCodePickerState extends State<PhoneNumberInput> {
                             ),
                             if (_selectedCountry != null)
                               Text(_selectedCountry!.dialCode,
-                                  style: const TextStyle(
-                                      color: Color(0xFF2A3E4E),
+                                  style: TextStyle(
+                                      color: widget.textColor,
                                       fontSize: 16,
                                       fontWeight: FontWeight.w600)),
                             const SizedBox(
                               width: 2,
                             ),
-                            const Icon(Icons.expand_more,
-                                color: Color(0xFF2A3E4E)),
+                            Icon(Icons.expand_more, color: widget.textColor),
                             Container(
                               height: 40,
                               width: 1,

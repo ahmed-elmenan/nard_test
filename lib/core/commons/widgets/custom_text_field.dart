@@ -6,6 +6,7 @@ import 'package:nard_test/core/commons/models/text_field_notifier.dart';
 import 'package:nard_test/core/consts/text_field_enums.dart';
 import 'package:nard_test/core/helpers/widget_helper.dart';
 import 'package:nard_test/core/theme/styles.dart';
+import 'package:nard_test/core/theme/theme_notifier.dart';
 
 class CustomTextField extends ConsumerStatefulWidget {
   final TextEditingController? controller;
@@ -34,18 +35,20 @@ class CustomTextField extends ConsumerStatefulWidget {
 class _CustomTextFieldState extends ConsumerState<CustomTextField> {
   late bool isObscured;
   late TextFieldValidator validator;
+  late ThemeHelper theme = ref.read(themeProvider);
 
   @override
   void initState() {
     isObscured = true;
     validator = ref.read(textFieldValidatorProvider(widget.type));
-
+    theme = ref.read(themeProvider);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     final assetName = isObscured ? 'hide' : 'show';
+    final _ = ref.watch(isDarkMode);
 
     return Column(
       children: [
@@ -60,6 +63,7 @@ class _CustomTextFieldState extends ConsumerState<CustomTextField> {
               controller: widget.controller,
               maxLength: validator.isNumber ? 15 : null,
               autocorrect: false,
+              style: TextStyle(color: theme.textColor),
               textAlign: TextAlign.left,
               inputFormatters: [
                 FilteringTextInputFormatter.deny(
@@ -68,15 +72,18 @@ class _CustomTextFieldState extends ConsumerState<CustomTextField> {
               decoration: InputDecoration(
                 contentPadding: const EdgeInsets.symmetric(
                     vertical: 10.0, horizontal: 10.0),
-                fillColor: Colors.white,
+                fillColor: theme.textFieldPrimaryColor,
                 filled: true,
                 counterText: "",
                 focusedBorder: Styles.focusedTextFieldBorderStyle,
-                enabledBorder: Styles.textFieldBorderStyle,
+                enabledBorder: Styles.textFieldBorderStyle.copyWith(
+                  borderSide: BorderSide(color: theme.borderColor, width: 1.0),
+                ),
                 errorBorder: Styles.errorTextFieldBorderStyle,
                 errorStyle: const TextStyle(color: Colors.red),
                 suffixIcon: _buildSuffixIcon(assetName),
-                hintStyle: Styles.hintTextStyle,
+                hintStyle: Styles.hintTextStyle
+                    .copyWith(color: theme.textFieldSeondaryColor),
                 hintText: widget.textHint,
                 border: const OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(8))),
@@ -98,8 +105,8 @@ class _CustomTextFieldState extends ConsumerState<CustomTextField> {
             });
           },
           icon: SvgPicture.asset('assets/images/$assetName.svg',
-              height: 21,
-              width: 27,
+              colorFilter: ColorFilter.mode(
+                  theme.textFieldSeondaryColor, BlendMode.srcIn),
               semanticsLabel: 'image desc' // used also to improve ASO
               ),
         )

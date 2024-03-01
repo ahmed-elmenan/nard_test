@@ -11,6 +11,7 @@ class DialogHelper {
       required assetName,
       required String label,
       required VoidCallback callback,
+      required Color bgColor,
       bool isDismissible = true}) {
     final context = GetIt.instance.get<NavigationService>().context;
     return showGeneralDialog<T>(
@@ -20,7 +21,7 @@ class DialogHelper {
             MaterialLocalizations.of(context).modalBarrierDismissLabel,
         pageBuilder: (BuildContext context, _, __) => Dialog(
             insetPadding: const EdgeInsets.all(12),
-            backgroundColor: Colors.white,
+            backgroundColor: bgColor,
             shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(10.0))),
             child: _dialogBody(

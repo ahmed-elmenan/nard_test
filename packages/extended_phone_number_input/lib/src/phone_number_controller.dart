@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:extended_phone_number_input/src/models/country.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttercontactpicker/fluttercontactpicker.dart';
-import 'package:phone_numbers_parser/phone_numbers_parser.dart' as parserNumber;
+import 'package:phone_numbers_parser/phone_numbers_parser.dart' as parser_number;
 
 import 'models/countries_list.dart';
 
@@ -109,8 +109,8 @@ class PhoneNumberInputController extends ChangeNotifier {
   }
 
 
-  parserNumber.PhoneNumber getPhoneNumberInfo(String phoneNumber) {
-    return parserNumber.PhoneNumber.fromRaw(phoneNumber);
+  parser_number.PhoneNumber getPhoneNumberInfo(String phoneNumber) {
+    return parser_number.PhoneNumber.fromRaw(phoneNumber);
   }
 
   void _selectValues() {

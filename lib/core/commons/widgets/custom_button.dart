@@ -1,24 +1,28 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:nard_test/core/theme/theme_notifier.dart';
 
-class CustomButton extends StatelessWidget {
+class CustomButton extends ConsumerWidget {
   final VoidCallback onPressed;
   final String text;
 
   const CustomButton({super.key, required this.onPressed, required this.text});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final theme = ref.read(themeProvider);
+    final _ = ref.watch(isDarkMode);
+
     return Container(
       padding: const EdgeInsets.only(bottom: 10),
       width: double.infinity,
       child: CupertinoButton(
         onPressed: onPressed,
-        color: const Color(0xFFFF5D21),
+        color: theme.primirayColor,
         child: Text(
           text,
-          style: const TextStyle(
-            color: Colors.white,
+          style: TextStyle(
+            color: theme.buttonLabelColor,
             fontSize: 16,
             fontWeight: FontWeight.w600,
           ),

@@ -9,8 +9,7 @@ abstract class WidgetHelper {
     return [
       Align(
         alignment: Alignment.centerLeft,
-        child: Text.rich(
-            TextSpan(text: label, style: style, children: <InlineSpan>[
+        child: Text.rich(TextSpan(text: label, children: <InlineSpan>[
           TextSpan(
             text: isMandatory ? '*' : '',
             style: style.copyWith(color: const Color(0xFFFF5D21)),

@@ -41,6 +41,8 @@ dependencies:
     path: packages/extended_phone_number_input 
   get_it: ^7.6.7
   flutter_riverpod: ^2.4.10
+  dark_light_button: ^0.0.2
+  shared_preferences: ^2.2.2
 
 dev_dependencies:
   flutter_test:
@@ -84,6 +86,9 @@ flutter:
     - family: Inter-Regular
       fonts:
         - asset: assets/fonts/inter/Inter-Regular.ttf
+    - family: Khebrat
+      fonts:
+        - asset: assets/fonts/khebrat/khebrat-regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
